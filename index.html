@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TypeWriter</title>
-  </head>
-  <style>
-    @keyframes blink {
-      0% {
-        opacity: 0;
-      }
+<html lang="en">
 
-      100% {
-        opacity: 1;
-        
-      }
-    }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Resume Website for Júlio César">
+  <meta name="author" content="Júlio César, programador em - Uberaba- MG">
+  <meta name="robots" content="index, follow">
+  <meta name="rating" content="general">
+  <link rel="stylesheet" href="style.css">
+  <title>Júlio César - Web Developer</title>
+</head>
 
-    #typewriter-content::after {
-      content: '';
-      border-right: 1px solid black;
-
-      animation: blink 1s infinite;
-      margin-left: 0.5rem;
-    }
-
-  </style>
-  <body>
-    <h1 id="typewriter-content"></h1>
-  </body>
-  <script src="script.js"></script>
+<body>
+  <div class="title">
+    <h1>Hey !</h1>
+  </div>
+  <div class="apresentation">
+    <img src="./assets/ReadyPlayerMe-Avatar.png" alt="avatar" >
+    <h1>I'm, <span id="typeWritterContent"></span></h1>
+  </div>
+  <div class="socials">
+    <h3>Follow me</h3>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/j%C3%BAlio-c%C3%A9sar-9b1022209/">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://www.github.com/juliocesarlab">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/juliowebdev">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+<script src="https://kit.fontawesome.com/710ee36645.js" crossorigin="anonymous"></script>
 </html>

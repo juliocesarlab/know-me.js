@@ -1,49 +1,45 @@
-const typewriterContent = document.querySelector('#typewriter-content')
 const phrases = ["Júlio César", "Front-end Developer", "Designer"]
+const typeWritterContent = document.querySelector('#typeWritterContent')
 
-let phraseIndex = 0
-let phraseLetterIndex = 0
-let currentPhrase = []
-let isDeleting = false
-let isEnd = false
+class TypeMachine {
+  constructor(phrasesArr, htmlElement, speed) {
+    this.phrases = phrasesArr;
+    this.text = htmlElement;
+    this.speed = speed;
 
-const loop = () => {
-  isEnd = false
-  if (phraseIndex < phrases.length) {
-
-    if (phraseLetterIndex <= phrases[phraseIndex].length && !isDeleting) {
-      currentPhrase.push(phrases[phraseIndex][phraseLetterIndex])
-      typewriterContent.innerHTML = currentPhrase.join('')
-      phraseLetterIndex++
-    } 
-
-    if (isDeleting && phraseLetterIndex <= phrases[phraseIndex].length) {
-      currentPhrase.pop(phrases[phraseIndex][phraseLetterIndex])
-      phraseLetterIndex--
-      typewriterContent.innerHTML = currentPhrase.join('')
-    }
-
-    if (phraseLetterIndex === phrases[phraseIndex].length) {
-      isDeleting = true
-      isEnd= true
-    }
-    
-    if (isDeleting && phraseLetterIndex === 0) {
-      currentPhrase = []
-      isDeleting = false
-      phraseIndex++
-      if (phraseIndex === phrases.length) {
-        phraseIndex = 0
-      }
-    }
+    this.i = 0;
+    this.j = 0;
+    this.isDeleting = false;
+    this.actualPhrase = [];
   }
 
-  const speedUp = Math.random() * (80 - 50) + 50
-  const normalSpeed = Math.random() * (300 - 400) + 300
-  const time = isEnd ? 2000 : isDeleting ? speedUp : normalSpeed
-
-  setTimeout(loop, time)
+  alternatePhrases() {
+    this.speed = 200
+    if (this.i < this.phrases.length) {
+      
+      if(this.j <= this.phrases[this.i].length && !this.isDeleting) {
+        this.actualPhrase.push(this.phrases[this.i][this.j])
+        this.text.innerHTML = this.actualPhrase.join('')
+        this.j++
+      }
+  
+      if (this.isDeleting) {
+        this.speed = 50
+        if (this.j === 0) {
+          this.isDeleting = false
+          this.i = (this.i + 1) === this.phrases.length ?  0 : (this.i + 1)
+        } else {
+          this.actualPhrase.pop()
+          this.j--
+          this.text.innerHTML = this.actualPhrase.join('')
+        }
+      }
+    
+      if (this.j === this.phrases[this.i].length) this.isDeleting = true  
+    }
+    setTimeout(this.alternatePhrases.bind(this), this.speed)
+  }
+  
 }
 
-loop()
-
+new TypeMachine(phrases, typeWritterContent ,250).alternatePhrases()
