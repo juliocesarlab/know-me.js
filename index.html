@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TypeWriter</title>
+  </head>
+  <style>
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+        
+      }
+    }
+
+    #typewriter-content::after {
+      content: '';
+      border-right: 1px solid black;
+
+      animation: blink 1s infinite;
+      margin-left: 0.5rem;
+    }
+
+  </style>
+  <body>
+    <h1 id="typewriter-content"></h1>
+  </body>
+  <script src="script.js"></script>
+</html>
