@@ -1,4 +1,4 @@
-const phrases = ["Júlio César", "Front-end Developer", "Designer"]
+const phrases = ["Júlio César", "Full Stack Developer", "Designer"]
 const typeWritterContent = document.querySelector('#typeWritterContent')
 
 class TypeMachine {
